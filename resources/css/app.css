@@ -78,18 +78,18 @@
 }
 
 :root {
-    /* Honey Flower Palette */
-    --honey-flower-50: #fefdf7;
-    --honey-flower-100: #fef9e9;
-    --honey-flower-200: #fdf0c6;
-    --honey-flower-300: #fbe18a;
-    --honey-flower-400: #f8ca4b;
-    --honey-flower-500: #f4b023;
-    --honey-flower-600: #e68d0f;
-    --honey-flower-700: #c06610;
-    --honey-flower-800: #9b5015;
-    --honey-flower-900: #7f4316;
-    --honey-flower-950: #442109;
+    /* Honey Flower Palette (HSL) */
+    --honey-flower-50: 258 68% 96%;
+    --honey-flower-100: 262 67% 90%;
+    --honey-flower-200: 262 70% 82%;
+    --honey-flower-300: 265 69% 74%;
+    --honey-flower-400: 266 69% 66%;
+    --honey-flower-500: 269 67% 57%;
+    --honey-flower-600: 270 56% 46%;
+    --honey-flower-700: 270 58% 35%;
+    --honey-flower-800: 270 61% 26%;
+    --honey-flower-900: 270 67% 16%;
+    --honey-flower-950: 270 77% 10%;
 
     /* Theme colors using honey flower palette */
     --background: var(--honey-flower-50);

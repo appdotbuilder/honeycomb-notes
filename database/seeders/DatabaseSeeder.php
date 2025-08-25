@@ -13,15 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create a few test users for easy login
+        $users = User::factory(3)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Ensure at least one default user always exists
+        User::firstOrCreate(
+            ['email' => 'test@example.com'],
+            ['name' => 'Test User', 'password' => bcrypt('password')]
+        );
 
-        $this->call([
-            NoteSeeder::class,
-        ]);
+        // Seed notes for each created user
+        foreach ($users as $user) {
+            $this->callWith(NoteSeeder::class, ['user' => $user]);
+        }
     }
 }
