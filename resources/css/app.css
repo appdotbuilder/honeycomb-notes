@@ -1,0 +1,343 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+:root {
+    /* Honey Flower Palette */
+    --honey-flower-50: #fefdf7;
+    --honey-flower-100: #fef9e9;
+    --honey-flower-200: #fdf0c6;
+    --honey-flower-300: #fbe18a;
+    --honey-flower-400: #f8ca4b;
+    --honey-flower-500: #f4b023;
+    --honey-flower-600: #e68d0f;
+    --honey-flower-700: #c06610;
+    --honey-flower-800: #9b5015;
+    --honey-flower-900: #7f4316;
+    --honey-flower-950: #442109;
+
+    /* Theme colors using honey flower palette */
+    --background: var(--honey-flower-50);
+    --foreground: var(--honey-flower-800);
+    --card: #ffffff;
+    --card-foreground: var(--honey-flower-800);
+    --popover: #ffffff;
+    --popover-foreground: var(--honey-flower-800);
+    --primary: var(--honey-flower-500);
+    --primary-foreground: #ffffff;
+    --secondary: var(--honey-flower-100);
+    --secondary-foreground: var(--honey-flower-800);
+    --muted: var(--honey-flower-100);
+    --muted-foreground: var(--honey-flower-600);
+    --accent: var(--honey-flower-200);
+    --accent-foreground: var(--honey-flower-800);
+    --destructive: #dc2626;
+    --destructive-foreground: #ffffff;
+    --border: var(--honey-flower-200);
+    --input: var(--honey-flower-200);
+    --ring: var(--honey-flower-400);
+    --chart-1: var(--honey-flower-400);
+    --chart-2: var(--honey-flower-500);
+    --chart-3: var(--honey-flower-600);
+    --chart-4: var(--honey-flower-700);
+    --chart-5: var(--honey-flower-800);
+    --radius: 0.625rem;
+    --sidebar: var(--honey-flower-100);
+    --sidebar-foreground: var(--honey-flower-800);
+    --sidebar-primary: var(--honey-flower-500);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: var(--honey-flower-200);
+    --sidebar-accent-foreground: var(--honey-flower-800);
+    --sidebar-border: var(--honey-flower-200);
+    --sidebar-ring: var(--honey-flower-400);
+}
+
+.dark {
+    /* Dark theme with honey flower accents */
+    --background: var(--honey-flower-950);
+    --foreground: var(--honey-flower-50);
+    --card: var(--honey-flower-900);
+    --card-foreground: var(--honey-flower-50);
+    --popover: var(--honey-flower-900);
+    --popover-foreground: var(--honey-flower-50);
+    --primary: var(--honey-flower-400);
+    --primary-foreground: var(--honey-flower-950);
+    --secondary: var(--honey-flower-800);
+    --secondary-foreground: var(--honey-flower-50);
+    --muted: var(--honey-flower-800);
+    --muted-foreground: var(--honey-flower-300);
+    --accent: var(--honey-flower-700);
+    --accent-foreground: var(--honey-flower-50);
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: var(--honey-flower-800);
+    --input: var(--honey-flower-800);
+    --ring: var(--honey-flower-600);
+    --chart-1: var(--honey-flower-400);
+    --chart-2: var(--honey-flower-500);
+    --chart-3: var(--honey-flower-600);
+    --chart-4: var(--honey-flower-700);
+    --chart-5: var(--honey-flower-800);
+    --sidebar: var(--honey-flower-900);
+    --sidebar-foreground: var(--honey-flower-50);
+    --sidebar-primary: var(--honey-flower-400);
+    --sidebar-primary-foreground: var(--honey-flower-950);
+    --sidebar-accent: var(--honey-flower-800);
+    --sidebar-accent-foreground: var(--honey-flower-50);
+    --sidebar-border: var(--honey-flower-800);
+    --sidebar-ring: var(--honey-flower-600);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Markdown Editor Styles */
+.markdown-editor {
+    @apply font-mono text-sm;
+}
+
+.markdown-editor:focus {
+    @apply outline-none ring-2 ring-primary/20;
+}
+
+/* Markdown Preview Styles */
+.markdown-preview {
+    @apply max-w-none;
+}
+
+.markdown-preview h1 {
+    @apply text-2xl font-bold text-foreground mb-4 mt-6 first:mt-0;
+}
+
+.markdown-preview h2 {
+    @apply text-xl font-semibold text-foreground mb-3 mt-5;
+}
+
+.markdown-preview h3 {
+    @apply text-lg font-medium text-foreground mb-2 mt-4;
+}
+
+.markdown-preview p {
+    @apply text-foreground mb-3 leading-relaxed;
+}
+
+.markdown-preview ul, .markdown-preview ol {
+    @apply mb-3 pl-6;
+}
+
+.markdown-preview li {
+    @apply text-foreground mb-1;
+}
+
+.markdown-preview blockquote {
+    @apply border-l-4 border-primary/30 pl-4 italic text-muted-foreground mb-3;
+}
+
+.markdown-preview code {
+    @apply bg-muted px-1 py-0.5 rounded text-sm font-mono text-primary;
+}
+
+.markdown-preview pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto mb-3;
+}
+
+.markdown-preview pre code {
+    @apply bg-transparent p-0;
+}
+
+/* Note Links */
+.note-link {
+    @apply text-primary hover:text-primary/80 underline cursor-pointer;
+}
+
+.note-link.broken {
+    @apply text-destructive hover:text-destructive/80;
+}
+
+/* Three-pane layout */
+.note-app {
+    @apply h-screen flex bg-background;
+}
+
+.note-sidebar {
+    @apply w-80 bg-sidebar border-r border-sidebar-border flex flex-col;
+}
+
+.note-content {
+    @apply flex-1 flex flex-col min-w-0;
+}
+
+.note-right-panel {
+    @apply w-80 bg-sidebar border-l border-sidebar-border flex flex-col;
+}
+
+/* Search styles */
+.search-result {
+    @apply p-2 hover:bg-accent rounded-md cursor-pointer;
+}
+
+.search-result.active {
+    @apply bg-accent;
+}
+
+/* Graph view styles */
+.graph-node {
+    @apply cursor-pointer;
+}
+
+.graph-node:hover {
+    @apply opacity-80;
+}
+
+.graph-link {
+    @apply stroke-muted-foreground;
+}
+
+/* Tag styles */
+.tag {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-secondary text-secondary-foreground;
+}
+
+.tag-input {
+    @apply flex flex-wrap gap-1 p-2 border border-input rounded-md min-h-[40px];
+}
+
+/* File tree styles */
+.file-tree {
+    @apply select-none;
+}
+
+.file-tree-item {
+    @apply flex items-center gap-2 p-2 hover:bg-accent rounded-md cursor-pointer;
+}
+
+.file-tree-item.active {
+    @apply bg-accent;
+}
+
+.file-tree-folder {
+    @apply font-medium text-foreground;
+}
+
+.file-tree-file {
+    @apply text-muted-foreground;
+}
+
+/* Honey Flower Color Utilities */
+.bg-honey-flower-50 { background-color: var(--honey-flower-50); }
+.bg-honey-flower-100 { background-color: var(--honey-flower-100); }
+.bg-honey-flower-200 { background-color: var(--honey-flower-200); }
+.bg-honey-flower-300 { background-color: var(--honey-flower-300); }
+.bg-honey-flower-400 { background-color: var(--honey-flower-400); }
+.bg-honey-flower-500 { background-color: var(--honey-flower-500); }
+.bg-honey-flower-600 { background-color: var(--honey-flower-600); }
+.bg-honey-flower-700 { background-color: var(--honey-flower-700); }
+.bg-honey-flower-800 { background-color: var(--honey-flower-800); }
+.bg-honey-flower-900 { background-color: var(--honey-flower-900); }
+.bg-honey-flower-950 { background-color: var(--honey-flower-950); }
+
+.text-honey-flower-50 { color: var(--honey-flower-50); }
+.text-honey-flower-100 { color: var(--honey-flower-100); }
+.text-honey-flower-200 { color: var(--honey-flower-200); }
+.text-honey-flower-300 { color: var(--honey-flower-300); }
+.text-honey-flower-400 { color: var(--honey-flower-400); }
+.text-honey-flower-500 { color: var(--honey-flower-500); }
+.text-honey-flower-600 { color: var(--honey-flower-600); }
+.text-honey-flower-700 { color: var(--honey-flower-700); }
+.text-honey-flower-800 { color: var(--honey-flower-800); }
+.text-honey-flower-900 { color: var(--honey-flower-900); }
+.text-honey-flower-950 { color: var(--honey-flower-950); }
+
+.border-honey-flower-50 { border-color: var(--honey-flower-50); }
+.border-honey-flower-100 { border-color: var(--honey-flower-100); }
+.border-honey-flower-200 { border-color: var(--honey-flower-200); }
+.border-honey-flower-300 { border-color: var(--honey-flower-300); }
+.border-honey-flower-400 { border-color: var(--honey-flower-400); }
+.border-honey-flower-500 { border-color: var(--honey-flower-500); }
+.border-honey-flower-600 { border-color: var(--honey-flower-600); }
+.border-honey-flower-700 { border-color: var(--honey-flower-700); }
+.border-honey-flower-800 { border-color: var(--honey-flower-800); }
+.border-honey-flower-900 { border-color: var(--honey-flower-900); }
+.border-honey-flower-950 { border-color: var(--honey-flower-950); }
